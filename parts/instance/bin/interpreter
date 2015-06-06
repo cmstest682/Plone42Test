@@ -1,0 +1,11 @@
+#!/home/sad/Plone/Python-2.7/bin/python -S
+import os
+import sys
+
+argv = [sys.executable] + sys.argv[1:]
+environ = os.environ.copy()
+path = '/home/sad/Plone/zinstance/parts/instance'
+if environ.get('PYTHONPATH'):
+    path = os.pathsep.join([path, environ['PYTHONPATH']])
+environ['PYTHONPATH'] = path
+os.execve(sys.executable, argv, environ)
